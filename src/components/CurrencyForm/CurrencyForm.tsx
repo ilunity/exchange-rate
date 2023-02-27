@@ -8,10 +8,7 @@ export const CurrencyForm: React.FC<CurrencyFormProps> = ({ onSubmit, onClick, i
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const { register, handleSubmit, formState: { errors } } = useForm<CurrencyFormInputs>();
 
-  const pattern = /\d/;
-  const getNumber = (str: string) => {
-    return Number(str);
-  };
+  const pattern = /\d+\.\d+|^[0-9]+$/g;
 
   return (
     <Stack
@@ -32,7 +29,6 @@ export const CurrencyForm: React.FC<CurrencyFormProps> = ({ onSubmit, onClick, i
         { ...register('dollar', {
           pattern,
           required: true,
-          setValueAs: getNumber,
         }) }
         label={ 'Dollar' }
         InputProps={ {
@@ -45,7 +41,6 @@ export const CurrencyForm: React.FC<CurrencyFormProps> = ({ onSubmit, onClick, i
         { ...register('euro', {
           pattern,
           required: true,
-          setValueAs: getNumber,
         }) }
         label={ 'Euro' }
         InputProps={ {
