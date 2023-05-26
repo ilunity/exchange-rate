@@ -1,6 +1,9 @@
+import { SIMULATION_METHOD } from '../../utils';
+
 export interface CurrencyFormInputs {
-  dollar: number,
-  euro: number
+  dollar: number;
+  euro: number;
+  method: SIMULATION_METHOD;
 }
 
 export interface CurrencyFormProps {

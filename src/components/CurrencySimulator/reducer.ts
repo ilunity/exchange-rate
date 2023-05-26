@@ -13,6 +13,7 @@ export const chartDataReducer = (state: ChartData, action: ChartDataAction) => {
     case 'setChart':
       return [action.payload];
     case 'updateChart':
-      return [...state, action.payload];
+      const sliceIndex = state.length > 365 ? 1 : 0;
+      return [...state.slice(sliceIndex), action.payload];
   }
 };
